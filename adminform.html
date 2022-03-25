@@ -23,6 +23,10 @@
     <input type="text" name="" id="ICUBed" /><br>
     <label for="Helpline">Helpline: </label>
     <input type="text" name="" id="Helpline" /><br>
+    <label for="ratings">Ratings: </label>
+    <input type="text" name="" id="ratings"/><br>
+    <label for="price">Price: </label>
+    <input type="text" name="" id="price"/><br>
     <button id="sub">submit</button>
     <script type="module">
         // Import the functions you need from the SDKs you need
@@ -46,7 +50,7 @@
         const app = initializeApp(firebaseConfig);
         const db = getDatabase();
 
-        document.getElementById("sub").addEventListener('click', function writeUserData(name, state, GeneralBed, OxygenBed, VentilatorBed, ICUBed, Helpline){
+        document.getElementById("sub").addEventListener('click', function writeUserData(name, state, GeneralBed, OxygenBed, VentilatorBed, ICUBed, Helpline, ratings, price){
             
             name = document.getElementById("name").value;
             state = document.getElementById("state").value;
@@ -55,15 +59,19 @@
             VentilatorBed = document.getElementById("VentilatorBed").value;
             ICUBed = document.getElementById("ICUBed").value;
             Helpline = document.getElementById("Helpline").value;
+            ratings = document.getElementById("ratings").value;
+            price = document.getElementById("price").value;
 
-            set(ref(db, 'ajmer/St Francis Hospital'), {
+            set(ref(db, 'pune/Jehangir Hospital'), {
                 username: name,
                 state: state,
                 GeneralBed: GeneralBed,
                 OxygenBed: OxygenBed,
                 VentilatorBed: VentilatorBed,
                 ICUBed: ICUBed,
-                Helpline: Helpline
+                Helpline: Helpline,
+                ratings: ratings,
+                price: price
             }); }
             )
     </script>
