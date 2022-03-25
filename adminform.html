@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hospital</title>
+</head>
+
+<body>
+    <label for="state">City: </label>
+    <input type="text" name="" id="state" /><br>
+    <label for="name">Hospital: </label>
+    <input type="text" name="" id="name" /><br>
+    <label for="GeneralBed">General Bed Available: </label>
+    <input type="text" name="" id="GeneralBed" /><br>
+    <label for="OxygenBed">Oxygen Bed Available: </label>
+    <input type="text" name="" id="OxygenBed" /><br>
+    <label for="VentilatorBed">ICU with Ventilator Available: </label>
+    <input type="text" name="" id="VentilatorBed" /><br>
+    <label for="ICUBed">ICU without Ventilator Available: </label>
+    <input type="text" name="" id="ICUBed" /><br>
+    <label for="Helpline">Helpline: </label>
+    <input type="text" name="" id="Helpline" /><br>
+    <button id="sub">submit</button>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.6.9/firebase-database.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAUUI1T6st7wo45glpbtVHNyuCoCXJXces",
+            authDomain: "sih2022-76a82.firebaseapp.com",
+            databaseURL: "https://sih2022-76a82-default-rtdb.firebaseio.com",
+            projectId: "sih2022-76a82",
+            storageBucket: "sih2022-76a82.appspot.com",
+            messagingSenderId: "980551821720",
+            appId: "1:980551821720:web:cbe826766d39aa281ba3ed"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase();
+
+        document.getElementById("sub").addEventListener('click', function writeUserData(name, state, GeneralBed, OxygenBed, VentilatorBed, ICUBed, Helpline){
+            
+            name = document.getElementById("name").value;
+            state = document.getElementById("state").value;
+            GeneralBed = document.getElementById("GeneralBed").value;
+            OxygenBed = document.getElementById("OxygenBed").value;
+            VentilatorBed = document.getElementById("VentilatorBed").value;
+            ICUBed = document.getElementById("ICUBed").value;
+            Helpline = document.getElementById("Helpline").value;
+
+            set(ref(db, 'ajmer/St Francis Hospital'), {
+                username: name,
+                state: state,
+                GeneralBed: GeneralBed,
+                OxygenBed: OxygenBed,
+                VentilatorBed: VentilatorBed,
+                ICUBed: ICUBed,
+                Helpline: Helpline
+            }); }
+            )
+    </script>
+</body>
+
+</html>
